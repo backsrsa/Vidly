@@ -14,13 +14,13 @@ namespace Vidly.Controllers
         public ActionResult Random()
         {
             var movie = new Movie() { Name = "Batman!!!" };
-            var customers= new List<Customer>()
+            var customers = new List<Customer>()
             {
                 new Customer() { Name = "Customer 1"},
                 new Customer() { Name = "Customer 2"},
                 new Customer() { Name = "Customer 3"}
             };
-            var viewModel= new RandomMovieViewModel()
+            var viewModel = new RandomMovieViewModel()
             {
                 Customers = customers,
                 Movie = movie
@@ -42,17 +42,28 @@ namespace Vidly.Controllers
         }
 
         //movies
-        public ActionResult Index(int? pageIndex, string sortBy)
+        //public ActionResult Index(int? pageIndex, string sortBy)
+        //{
+        //    if (!pageIndex.HasValue)
+        //    {
+        //        pageIndex = 1;
+        //    }
+        //    if (string.IsNullOrWhiteSpace(sortBy))
+        //    {
+        //        sortBy = "Name";
+        //    }
+        //    return Content($"pageIndex={pageIndex}&sortBy={sortBy}");
+        //}
+
+        public ActionResult Index()
         {
-            if (!pageIndex.HasValue)
+            var movieList = new List<Movie>()
             {
-                pageIndex = 1;
-            }
-            if (string.IsNullOrWhiteSpace(sortBy))
-            {
-                sortBy = "Name";
-            }
-            return Content($"pageIndex={pageIndex}&sortBy={sortBy}");
+                new Movie() {Name = "Batman!!!"},
+                new Movie() {Name = "ironman!!!"},
+
+            };
+            return View(movieList);
         }
     }
 }
